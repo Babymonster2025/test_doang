@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Spesial untuk Anisa Andini</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            padding: 50px;
+            transition: background 0.5s;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff3366;
+            animation: fadeIn 2s ease-in-out, glow 1.5s infinite alternate;
+        }
+        p {
+            font-size: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            animation: popUp 1s ease-out;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff3366;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff6699;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes popUp {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff6699, 0 0 10px #ff3366; }
+            to { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff6699; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff3366;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        #music-control {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+    </audio>
+
+    <div class="card">
+        <h1>Halo, Anisa Andini! 😁</h1>
+        <p>Semoga harimu menyenangkan dan penuh kebahagiaan.</p>
+        <p>Teruslah bersinar dan menginspirasi! ✨</p>
+        <button onclick="showSurprise()">🎉 Klik untuk Kejutan!</button>
+        <button id="music-control" onclick="toggleMusic()">▶️ Play Music</button>
+    </div>
+
+    <script>
+        function showSurprise() {
+            document.body.style.background = "#ffccff";
+            createConfetti();
+            alert("Anisa, kamu luar biasa! 😊");
+        }
+
+        function toggleMusic() {
+            var music = document.getElementById("bg-music");
+            var button = document.getElementById("music-control");
+
+            if (music.paused) {
+                music.play();
+                button.textContent = "⏸️ Pause Music";
+            } else {
+                music.pause();
+                button.textContent = "▶️ Play Music";
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                document.body.appendChild(confetti);
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                confetti.style.backgroundColor = ["#ff3366", "#ff6699", "#ffccff", "#ff99cc"][Math.floor(Math.random() * 4)];
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
